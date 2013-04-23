@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>WebStripper Dial Protection Confirmation</title>
+<script language=javascript>
+var followed 
+
+function GetURL()
+{	var Address
+	var idx
+
+	Address = location.hash
+	if (Address == '')
+	{
+		Address = location.href
+	}
+	idx = 0
+	while((idx < Address.length) && (Address.charAt(idx) != '='))
+	{
+		idx++;
+	}
+	if (idx>= Address.length)	
+	{
+		return "(Sorry, the address is unknown)";
+	}
+	else
+	{
+		idx++;
+		return Address.substring(idx);
+	}
+}
+</script>
+</head>
+<body>
+<noscript>
+<p>The link called by your browser has been removed by WebStrippers Dial Protection.  
+Because your browser does not support scripts you are seeing this page instaed of a link.
+You can see the link in the address bar above (following the "?link=" section of the
+address).  To follow the link try editing the Address bar. To return to the previous page use the back button
+of your browser.</p></noscript>
+
+<script language=javascript>
+<!--
+	document.write("<p>You clicked on a link to <a href='"+GetURL()+"'>"+GetURL()+"</a>.</p>"+
+	"<p>This link has been removed by WebStrippers Dial Protection.  To follow the link click on "+
+	"the address above.  To stay offline go <a href='javascript:void(0)' onclick='back()'>back</a>.</p>"+
+	"<p>To change WebStrippers Dial Protection settings open WebStripper and go to Options|Options|General</p>")
+//--></script>
+<!--
+if (followed == 3)
+{
+	back()
+}
+else
+{
+	if (confirm("WebStripper Dial Protected link\n\n"+
+	"Do you want to follow the online link to "+GetURL()+"?\n"+
+	"To go back click cancel.\n\n"+
+	"(To change Dial Protection settings open Options|Options|General within WebStripper)"))
+	{
+		followed = 3;
+		location.href = GetURL()
+	}
+	else
+	{
+		window.back()
+	}
+}
+-->
+</body>
+</html>
